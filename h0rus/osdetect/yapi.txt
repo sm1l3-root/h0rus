@@ -1,0 +1,5 @@
+json parser json ile verileri ayrıştırıp gerekli verileri returnleyecek
+
+sonra karar ilişki kısmına gidecek oradan da NodeEdge.py dosyasına gönderecek 
+ilk class json verilerini dosyaya yazıyor çünkü verileri farklı farklı şekillderde sürekli işlememiz gerekeceği için tekrar terkrar sistemde kod çalıştırmamamız lazım SOC lerin çok dikkatini çekebilir ve gereksiz yük oluştururu sistemde
+
