@@ -1,1 +1,0 @@
-bu dosyanın içindeki kodun amacı gelen ip verilerine göre nodelar arasındaki ilişkiyi kurmak ve sonra NodeEdge dosyasına göndermek bu ilişkileri
