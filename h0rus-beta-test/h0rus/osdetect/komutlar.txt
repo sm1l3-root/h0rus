@@ -1,0 +1,17 @@
++1. Default Gateway:
+powershell.exe -NoProfile -Command "(Get-NetRoute -DestinationPrefix '0.0.0.0/0' -ErrorAction SilentlyContinue).NextHop | Where-Object { $_ -ne '0.0.0.0' } | ConvertTo-Json"
+
++2. ARP (Dynamic IP Addresses ve Interfaces):
+powershell.exe -NoProfile -Command "$localIPs = (Get-NetIPAddress -AddressFamily IPv4).IPAddress; Get-NetNeighbor -AddressFamily IPv4 -State Reachable,Stale | Where-Object { $_.IPAddress -notlike '224*' -and $_.IPAddress -notlike '239*' -and $_.IPAddress -notlike '255*' -and $localIPs -notcontains $_.IPAddress } | Group-Object InterfaceAlias | ForEach-Object { $alias = $_.Name; $ipConfig = Get-NetIPConfiguration -InterfaceAlias $alias -ErrorAction SilentlyContinue; [PSCustomObject]@{ Interface = $alias; LocalIP = $ipConfig.IPv4Address.IPAddress; DynamicIPs = ($_.Group.IPAddress | Select-Object -Unique) } } | ConvertTo-Json -Depth 3"
+
++3. Get-NetRoute (Anlamlı "via" / NextHop Filtresi):
+powershell.exe -NoProfile -Command "Get-NetRoute | Where-Object { $_.NextHop -ne '0.0.0.0' -and $_.NextHop -ne '::' -and $_.NextHop -notlike '127.*' -and $_.NextHop -notlike '224.*' -and $_.NextHop -notlike '239.*' -and $_.NextHop -ne $_.DestinationPrefix.Split('/')[0] } | Select-Object DestinationPrefix, NextHop | ConvertTo-Json"
+
++4. Get-NetNeighbor (Reachable ve Stale Net Neighbors):
+powershell.exe -NoProfile -Command "Get-NetNeighbor -State Reachable,Stale | Where-Object { $_.IPAddress -notlike '224*' -and $_.IPAddress -notlike '239*' -and $_.IPAddress -notlike '127.*' -and $_.IPAddress -notlike 'ff02*' } | Select-Object -ExpandProperty IPAddress | Select-Object -Unique | ConvertTo-Json"
+
++5. Get-NetIPConfiguration (Interface Aliases, IPv4 Addresses, DNS Servers):
+powershell.exe -NoProfile -Command "Get-NetIPConfiguration | Select-Object InterfaceAlias, @{N='IPv4Addresses';E={$_.IPv4Address.IPAddress}}, @{N='DNSServers';E={$_.DNSServer.ServerAddresses}} | ConvertTo-Json -Depth 3"
+
++6. Get-NetTCPConnection (Anlamlı LocalAddress, LocalPort, RemoteAddress, RemotePort):
+powershell.exe -NoProfile -Command "Get-NetTCPConnection -State Established | Where-Object { $_.RemoteAddress -ne '0.0.0.0' -and $_.RemoteAddress -ne '127.0.0.1' -and $_.LocalAddress -ne '127.0.0.1' -and $_.RemoteAddress -ne '::1' -and $_.LocalAddress -ne '::1' } | Select-Object LocalAddress, LocalPort, RemoteAddress, RemotePort | ConvertTo-Json"
