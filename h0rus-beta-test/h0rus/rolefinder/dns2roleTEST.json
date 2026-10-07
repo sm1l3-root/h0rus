@@ -1,0 +1,144 @@
+{
+  "noise_keywords": [
+    "prod",
+    "dev",
+    "test",
+    "stg",
+    "stage",
+    "qa",
+    "local",
+    "corp",
+    "internal",
+    "com",
+    "net",
+    "org",
+    "lan",
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "srv",
+    "vm",
+    "lab"
+  ],
+  "roles": {
+    "Domain Controller": {
+      "keywords": [
+        "dc",
+        "adds",
+        "domain",
+        "ad",
+        "ldap",
+        "pdc",
+        "bdc",
+        "kerberos",
+        "auth"
+      ],
+      "weight": 0.9
+    },
+    "Web": {
+      "keywords": [
+        "web",
+        "www",
+        "http",
+        "iis",
+        "nginx",
+        "apache",
+        "frontend",
+        "fe",
+        "app",
+        "node",
+        "portal"
+      ],
+      "weight": 0.8
+    },
+    "Database Server": {
+      "keywords": [
+        "db",
+        "sql",
+        "mysql",
+        "mssql",
+        "ora",
+        "oracle",
+        "postgres",
+        "pg",
+        "mongo",
+        "redis",
+        "mariadb"
+      ],
+      "weight": 0.85
+    },
+    "Virtualization": {
+      "keywords": [
+        "esx",
+        "esxi",
+        "vcenter",
+        "pve",
+        "proxmox",
+        "hyperv",
+        "vmware",
+        "xen",
+        "kvm",
+        "virt"
+      ],
+      "weight": 0.85
+    },
+    "Linux Management": {
+      "keywords": [
+        "jump",
+        "bastion",
+        "mgr",
+        "mgmt",
+        "ansible",
+        "puppet",
+        "chef",
+        "ssh",
+        "admin"
+      ],
+      "weight": 0.7
+    },
+    "Mail Server": {
+      "keywords": [
+        "mail",
+        "smtp",
+        "pop3",
+        "imap",
+        "exchange",
+        "mta",
+        "postfix",
+        "mx"
+      ],
+      "weight": 0.8
+    },
+    "File Storage": {
+      "keywords": [
+        "file",
+        "fs",
+        "nas",
+        "san",
+        "storage",
+        "share",
+        "ftp",
+        "sftp",
+        "nfs",
+        "smb"
+      ],
+      "weight": 0.75
+    },
+    "Monitoring": {
+      "keywords": [
+        "mon",
+        "zabbix",
+        "grafana",
+        "prom",
+        "elastic",
+        "elk",
+        "siem",
+        "log",
+        "graylog"
+      ],
+      "weight": 0.75
+    }
+  }
+}
