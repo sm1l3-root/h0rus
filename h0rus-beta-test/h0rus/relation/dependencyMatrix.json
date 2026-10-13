@@ -1,0 +1,133 @@
+{
+  "version": "1.1",
+  "target_tool": "h0rus_GhostFinder",
+  "role_dependencies": {
+    "Web_Server": {
+      "description": "HTTP/HTTPS servisleri sunan web düğümü",
+      "direct_dependencies": [
+        {
+          "role_name": "Database_Server",
+          "criticality": "HIGH",
+          "relationship_type": "DATA_PERSISTENCE",
+          "discriminative_ports": [3306, 5432, 1433, 1521, 27017, 6379],
+          "port_weight":[0.2, 0.3, 0.2, 0.1, 0.4, 0.1],
+          "probability": 0.85
+        },
+        {
+          "role_name": "Reverse_Proxy_LoadBalancer",
+          "criticality": "MEDIUM",
+          "relationship_type": "INGRESS_TRAFFIC",
+          "discriminative_ports": [8443, 9000, 10000],
+          "port_weight":[0.20, 0.3, 0.2],
+          "probability": 0.35
+        },
+        {
+          "role_name": "Internal_DNS_Server",
+          "criticality": "HIGH",
+          "relationship_type": "NAME_RESOLUTION",
+          "discriminative_ports": [53],
+          "port_weight":[0.5],
+          "probability": 0.90
+        },
+        {
+          "role_name": "Authentication_Identity_Provider",
+          "criticality": "MEDIUM",
+          "relationship_type": "AUTH_VERIFICATION",
+          "discriminative_ports": [88, 389, 636],
+          "port_weight":[0.20, 0.3, 0.2],
+          "probability": 0.50
+        },
+        {
+          "role_name": "Application_Gateway_Egress",
+          "criticality": "LOW",
+          "relationship_type": "OUTBOUND_API_CALL",
+          "discriminative_ports": [8081, 9090],
+          "port_weight":[0.20, 0.3],
+          "probability": 0.30
+        }
+      ]
+    },
+
+    "Domain_Controller": {
+      "description": "Active Directory / Kerberos kimlik doğrulama düğümü",
+      "direct_dependencies": [
+        {
+          "role_name": "Primary_DNS_Server",
+          "criticality": "CRITICAL",
+          "relationship_type": "AD_INTEGRATED_DNS",
+          "discriminative_ports": [53],
+          "port_weight":[0.5],
+          "probability": 0.95
+        },
+        {
+          "role_name": "CA_Certificate_Authority",
+          "criticality": "HIGH",
+          "relationship_type": "PKI_CERT_ISSUANCE",
+          "discriminative_ports": [135, 8200],
+          "port_weight":[0.20, 0.3],
+          "probability": 0.50
+        },
+        {
+          "role_name": "Secondary_Domain_Controller",
+          "criticality": "HIGH",
+          "relationship_type": "SYSVOL_REPLICATION",
+          "discriminative_ports": [3269, 3268, 5722, 9389],
+          "port_weight":[0.50, 0.3, 0.2, 0.3],
+          "probability": 0.25
+        }
+      ]
+    },
+
+    "Database_Server": {
+      "description": "SQL / NoSQL veri depolama düğümü",
+      "direct_dependencies": [
+        {
+          "role_name": "Central_Storage_SAN_NAS",
+          "criticality": "HIGH",
+          "relationship_type": "STORAGE_MOUNT_iSCSI_NFS",
+          "discriminative_ports": [860, 2049, 3260],
+          "port_weight":[0.20, 0.3, 0.2],
+          "probability": 0.60
+        },
+        {
+          "role_name": "Backup_Server",
+          "criticality": "MEDIUM",
+          "relationship_type": "PERIODIC_BACKUP",
+          "discriminative_ports": [6162, 9102, 10000],
+          "port_weight":[0.20, 0.3, 0.2],
+          "probability": 0.70
+        }
+      ]
+    },
+
+    "Application_Server": {
+      "description": "İş mantığı çalıştıran arka plan uygulama sunucusu (Java, .NET, Node.js)",
+      "direct_dependencies": [
+        {
+          "role_name": "Database_Server",
+          "criticality": "CRITICAL",
+          "relationship_type": "DATA_QUERY",
+          "discriminative_ports": [1433, 3306, 5432, 1521, 27017],
+          "port_weight":[0.20, 0.3, 0.2, 0.2, 0.3],
+          "probability": 0.90
+        },
+        {
+          "role_name": "Message_Broker_Queue",
+          "criticality": "MEDIUM",
+          "relationship_type": "ASYNC_TASK_QUEUE",
+          "discriminative_ports": [5672, 9092, 6379, 61616],
+          "port_weight":[0.2, 0.3, 0.2, 0.3],
+          "probability": 0.55
+        },
+        {
+          "role_name": "Web_Server",
+          "criticality": "HIGH",
+          "relationship_type": "REVERSE_PROXY_SOURCE",
+          "discriminative_ports": [8080, 8000, 9000],
+          "port_weight":[0.20, 0.3, 0.2],
+          "probability": 0.60
+        }
+      ]
+    }
+  }
+}

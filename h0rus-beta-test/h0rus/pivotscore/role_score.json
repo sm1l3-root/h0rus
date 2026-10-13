@@ -1,0 +1,21 @@
+
+{
+    "Role_Scores":{
+        "Internal_DNS_Server":{
+            "score": 1.0
+        },
+        "Database_Server":{
+            "score": 0.80
+        },
+        "Primary_DNS_Server":{
+            "score":0.80
+        },
+        "CA_Certificate_Authority":{
+            "score":0.40
+        },
+        "Secondary_Domain_Controller":{
+            "score":0.95
+        }
+
+    }
+}
