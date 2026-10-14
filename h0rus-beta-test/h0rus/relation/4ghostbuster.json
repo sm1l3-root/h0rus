@@ -1,0 +1,26 @@
+{
+    "nodes": {
+        "192.168.38.254": {
+            "port2role": "Linux_Management",
+            "open_ports": [
+                80
+            ],
+            "ttl": 128,
+            "dns2role": "Domain_Controller"
+        },
+        "192.168.38.1": {
+            "port2role": "Virtualization",
+            "open_ports": [
+                135,
+                139,
+                445,
+                902,
+                912,
+                1521,
+                8080
+            ],
+            "ttl": 128,
+            "dns2role": "Domain_Controller"
+        }
+    }
+}

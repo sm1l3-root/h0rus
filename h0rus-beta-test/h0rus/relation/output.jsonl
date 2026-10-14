@@ -1,0 +1,4 @@
+{"Node Ip": "192.168.38.254", "Node Role": "Linux_Management", "Ghost": "Target_Linux_Nodes"}
+{"Node Ip": "192.168.38.254", "Node Role": "Linux_Management", "Ghost": "Internal_Package_Repository"}
+{"Node Ip": "192.168.38.1", "Node Role": "Virtualization", "Ghost": "Central_Storage_SAN_NAS"}
+{"Node Ip": "192.168.38.1", "Node Role": "Virtualization", "Ghost": "Central_Management_vCenter_Proxmox"}
