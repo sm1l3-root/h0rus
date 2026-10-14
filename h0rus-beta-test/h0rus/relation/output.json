@@ -1,5 +1,0 @@
-{"Node Ip": "10.154.142.50", "Node Role": "Web_Server", "Ghost": "Database_Server"}
-{"Node Ip": "10.154.142.50", "Node Role": "Web_Server", "Ghost": "Internal_DNS_Server"}
-{"Node Ip": "10.10.5.10", "Node Role": "Domain_Controller", "Ghost": "Primary_DNS_Server"}
-{"Node Ip": "10.10.5.10", "Node Role": "Domain_Controller", "Ghost": "CA_Certificate_Authority"}
-{"Node Ip": "10.10.5.10", "Node Role": "Domain_Controller", "Ghost": "Secondary_Domain_Controller"}
