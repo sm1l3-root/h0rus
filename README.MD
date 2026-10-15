@@ -31,16 +31,7 @@ pivotscore is a mathematical formule that i invented that determines a devices c
 
 ### Mathematical Formulation
 
-The PivotScore ($\mathbf{PS}$) for a given target node $N$ is calculated as:
-
-$$\mathbf{PS}(N) = R_N \times \Big( \sum_{i=1}^{k} V(G_i) \Big) \times \sqrt{\left(\overline{V_G}\right)^{k}}$$
-
-*Where:*
-* **$R_N$**: Base role criticality score of Node $N$ (derived via *Weighted Jaccard Inference*).
-* **$k$**: Total count of Ghost Nodes ($G_i$) dependent on or routed through Node $N$.
-* **$V(G_i)$**: Individual value score of the $i$-th Ghost Node.
-* **$\overline{V_G}$**: Mean value score across all associated Ghost Nodes ($\frac{1}{k} \sum V(G_i)$).
-* **Exponential Scaling & Square Root Limiter:** As the count ($k$) and importance of dependent Ghost Nodes grow, the exponential power $\left(\overline{V_G}\right)^k$ reflects the compounding impact of compromising Node $N$. A square root operator is applied to constrain unbounded mathematical growth while preserving rank distinction.
+<img width="362" height="316" alt="Image" src="https://github.com/user-attachments/assets/08e57774-5e6d-41ab-a081-be5c1ee92974" />
 
 But How?
 
