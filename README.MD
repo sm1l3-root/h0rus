@@ -112,4 +112,4 @@ Pull requests and issue reports are welcome! For major architectural changes, pl
 This project is open-source and licensed under the GNU Affero General Public License v3 (AGPLv3).
 
 *For commercial licensing options, enterprise features, custom integrations, or proprietary distribution, please contact:*  
-**Efe Dora Cankardeş** - [LinkedIn]
+**Efe Dora Cankardeş** - [https://www.linkedin.com/in/efe-dora-cankarde%C5%9F-389444218]
