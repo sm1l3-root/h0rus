@@ -4,9 +4,7 @@ Network Topology Generator , Ghost Node And Role Finder, Pivot Score Generating 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
 [![Release](https://img.shields.io/badge/version-v0.9.0--alpha-red.svg)](#)
-![Topology](https://shields.io)
-![Network Recon](https://shields.io)
-![Network Discovery](https://shields.io)
+
 
 > **h0rus** is an autonomous recognition and network analysis framework that transforms passive **Nmap, Traceroute, DNS, ARP, and OS command outputs** into actionable intelligence. By leveraging **Weighted Jaccard Similarity** and **Bayesian Network Theorems**, h0rus classifies host roles, detects **TTL/Hop anomalies**, and identifies hidden **Ghost Nodes** through dependency matrices.
 >
