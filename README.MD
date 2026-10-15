@@ -1,4 +1,4 @@
-# 🦅 h0rus - Community Edition Network Topology Generator , Ghost Node And Role Finder And Pivot Score Generating Penetration Testing Network Scanning analyzing and auto-decide featured Tool that makes 2 or 3 weeks job in 2-3 minutes   
+# 🦅 h0rus - Community Edition Network Topology Generator , Ghost Node And Role Finder, Pivot Score Generating Penetration Testing Network Scanning , analyzing and auto-decide featured Tool that makes 2 or 3 weeks manuel job in 2-3 minutes   
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
@@ -63,7 +63,7 @@ The generated dynamic HTML/Canvas topology map applies the following visual sema
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/efedoracankardes/h0rus.git](https://github.com/efedoracankardes/h0rus.git)
+   git clone [https://github.com/sm1l3-root/h0rus.git](https://github.com/sm1l3-root/h0rus.git)
    cd h0rus
 Install Python dependencies:
 
