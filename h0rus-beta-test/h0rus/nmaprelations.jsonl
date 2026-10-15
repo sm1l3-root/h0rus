@@ -1,8 +1,0 @@
-[
-    {
-        "Source_IP": "LOCAL_HOST",
-        "Target_IP": "192.168.38.254",
-        "Relation": "ROUTED_TO",
-        "RTT_ms": "0.00"
-    }
-]
