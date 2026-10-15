@@ -1,0 +1,200 @@
+
++
+[
+    {
+        "Interface":  "VMware Network Adapter VMnet8",
+        "LocalIP":  "192.168.38.1",
+        "DynamicIPs":  "192.168.38.254"
+    },
+    {
+        "Interface":  "VMware Network Adapter VMnet1",
+        "LocalIP":  "192.168.77.1",
+        "DynamicIPs":  "192.168.77.254"
+    },
+    {
+        "Interface":  "Wi-Fi 2",
+        "LocalIP":  "10.60.44.146",
+        "DynamicIPs":  "10.60.44.175"
+    }
+]
+
+++
+"10.60.44.175"
+
++++
+{
+    "DestinationPrefix":  "0.0.0.0/0",
+    "NextHop":  "10.60.44.175"
+}
+
+++++
+[
+    "192.168.38.254",
+    "192.168.77.254",
+    "10.60.44.175"
+]
+
++++++
+[
+    {
+        "InterfaceAlias":  "VMware Network Adapter VMnet1",
+        "IPv4Addresses":  "192.168.77.1",
+        "DNSServers":  {
+                           "value":  [
+                                         "fec0:0:0:ffff::1",
+                                         "fec0:0:0:ffff::2",
+                                         "fec0:0:0:ffff::3"
+                                     ],
+                           "Count":  3
+                       }
+    },
+    {
+        "InterfaceAlias":  "VMware Network Adapter VMnet8",
+        "IPv4Addresses":  "192.168.38.1",
+        "DNSServers":  {
+                           "value":  [
+                                         "fec0:0:0:ffff::1",
+                                         "fec0:0:0:ffff::2",
+                                         "fec0:0:0:ffff::3"
+                                     ],
+                           "Count":  3
+                       }
+    },
+    {
+        "InterfaceAlias":  "Wi-Fi 2",
+        "IPv4Addresses":  "10.60.44.146",
+        "DNSServers":  "10.60.44.175"
+    },
+    {
+        "InterfaceAlias":  "OpenVPN Data Channel Offload",
+        "IPv4Addresses":  "169.254.61.116",
+        "DNSServers":  {
+                           "value":  [
+                                         "fec0:0:0:ffff::1",
+                                         "fec0:0:0:ffff::2",
+                                         "fec0:0:0:ffff::3"
+                                     ],
+                           "Count":  3
+                       }
+    },
+    {
+        "InterfaceAlias":  "OpenVPN Connect DCO Adapter",
+        "IPv4Addresses":  "169.254.96.47",
+        "DNSServers":  {
+                           "value":  [
+                                         "fec0:0:0:ffff::1",
+                                         "fec0:0:0:ffff::2",
+                                         "fec0:0:0:ffff::3"
+                                     ],
+                           "Count":  3
+                       }
+    },
+    {
+        "InterfaceAlias":  "Yerel A§ Ba§lants",
+        "IPv4Addresses":  "169.254.112.173",
+        "DNSServers":  {
+                           "value":  [
+                                         "fec0:0:0:ffff::1",
+                                         "fec0:0:0:ffff::2",
+                                         "fec0:0:0:ffff::3"
+                                     ],
+                           "Count":  3
+                       }
+    },
+    {
+        "InterfaceAlias":  "Yerel A§ Ba§lants 2",
+        "IPv4Addresses":  "169.254.147.246",
+        "DNSServers":  {
+                           "value":  [
+                                         "fec0:0:0:ffff::1",
+                                         "fec0:0:0:ffff::2",
+                                         "fec0:0:0:ffff::3"
+                                     ],
+                           "Count":  3
+                       }
+    }
+]
+
+++++++
+[
+    {
+        "LocalAddress":  "fe80::9614:996a:59ca:3668%21",
+        "LocalPort":  52363,
+        "RemoteAddress":  "fe80::9614:996a:59ca:3668%21",
+        "RemotePort":  52360
+    },
+    {
+        "LocalAddress":  "fe80::9614:996a:59ca:3668%21",
+        "LocalPort":  52360,
+        "RemoteAddress":  "fe80::9614:996a:59ca:3668%21",
+        "RemotePort":  52363
+    },
+    {
+        "LocalAddress":  "fe80::de7b:7d3e:4e67:7430%8",
+        "LocalPort":  49672,
+        "RemoteAddress":  "fe80::de7b:7d3e:4e67:7430%8",
+        "RemotePort":  1521
+    },
+    {
+        "LocalAddress":  "fe80::9614:996a:59ca:3668%21",
+        "LocalPort":  35838,
+        "RemoteAddress":  "fe80::9614:996a:59ca:3668%21",
+        "RemotePort":  35836
+    },
+    {
+        "LocalAddress":  "fe80::9614:996a:59ca:3668%21",
+        "LocalPort":  35836,
+        "RemoteAddress":  "fe80::9614:996a:59ca:3668%21",
+        "RemotePort":  35838
+    },
+    {
+        "LocalAddress":  "fe80::9614:996a:59ca:3668%21",
+        "LocalPort":  35831,
+        "RemoteAddress":  "fe80::9614:996a:59ca:3668%21",
+        "RemotePort":  35830
+    },
+    {
+        "LocalAddress":  "fe80::9614:996a:59ca:3668%21",
+        "LocalPort":  35830,
+        "RemoteAddress":  "fe80::9614:996a:59ca:3668%21",
+        "RemotePort":  35831
+    },
+    {
+        "LocalAddress":  "fe80::de7b:7d3e:4e67:7430%8",
+        "LocalPort":  1521,
+        "RemoteAddress":  "fe80::de7b:7d3e:4e67:7430%8",
+        "RemotePort":  49672
+    },
+    {
+        "LocalAddress":  "10.60.44.146",
+        "LocalPort":  64360,
+        "RemoteAddress":  "140.82.114.25",
+        "RemotePort":  443
+    },
+    {
+        "LocalAddress":  "10.60.44.146",
+        "LocalPort":  49416,
+        "RemoteAddress":  "98.66.133.185",
+        "RemotePort":  443
+    },
+    {
+        "LocalAddress":  "10.60.44.146",
+        "LocalPort":  43220,
+        "RemoteAddress":  "20.190.147.3",
+        "RemotePort":  443
+    },
+    {
+        "LocalAddress":  "10.60.44.146",
+        "LocalPort":  42383,
+        "RemoteAddress":  "142.251.31.188",
+        "RemotePort":  5228
+    },
+    {
+        "LocalAddress":  "10.60.44.146",
+        "LocalPort":  36218,
+        "RemoteAddress":  "4.150.223.105",
+        "RemotePort":  443
+    }
+]
+
++++++++
