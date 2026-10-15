@@ -101,7 +101,10 @@ We are actively developing **h0rus** to expand its threat-hunting capabilities, 
 
 ##Some Details!
 - Normally h0rus is able to run in both linux and windows systems but right now its able to RUN ON just windows machines
+- Vulnerability matching heuristics utilize publicly available exploit metadata sourced from the OffSec Exploit-DB / Searchsploit archive.
+## ⚠️ Legal & Ethical Disclaimer
 
+**h0rus** is developed strictly for educational, threat hunting, and authorized penetration testing purposes only. The developer (Efe Dora Cankardeş) assumes no liability and is not responsible for any misuse, unauthorized network scanning, or damage caused by this utility. Users are solely responsible for complying with all applicable local, state, and federal security laws before executing scans against any network assets.
 Developer: Efe Dora Cankardeş -> sm1l3
 
 Project Status: v0.9.0-alpha (Public Alpha)
