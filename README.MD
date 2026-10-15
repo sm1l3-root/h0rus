@@ -39,10 +39,11 @@ But How?
 formule works in a very simple way, if a devices ghost nodes is valuable and the count of this valuable nodes are more than other devices the formule grows exponantially because of "the power of" method 
 and the power of (ghosts value scores role mean) is a really big number so i use a sqrt on the power to limit its growing potential 
 
+<img width="1600" height="746" alt="Image" src="https://github.com/user-attachments/assets/c31ca4f6-bbf6-4852-8426-a983f5f6912d" />
 ---
 
 ## 🖥️ Topographic Visualization Rules
-
+<img width="1600" height="750" alt="Image" src="https://github.com/user-attachments/assets/d04c6e5b-4e47-4612-81ba-e90d1d0c940e" />
 The generated dynamic HTML/Canvas topology map applies the following visual semantics:
 
 * 🔴 **Red Nodes:** Active devices analyzed by the **GhostBuster Engine**.
