@@ -9,6 +9,7 @@
 >
 > Built with a custom mathematical formula (**PivotScore**), h0rus automatically determines the most strategic target for lateral movement—turning **2 to 3 weeks of manual reconnaissance into 2 to 3 minutes**.
 
+<img width="1458" height="716" alt="Image" src="https://github.com/user-attachments/assets/98a4e3d4-525a-448c-a07c-e1a552370079" />
 ---
 ## 📌 Why h0rus?
 
