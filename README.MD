@@ -19,11 +19,12 @@ Also neither them is using h0rus methodology to inspecting network, BloodHound i
 	
 Disclaimer!!!: If you want to test the software you might wanna optimize or change the data files given below right now all the datas are adjusted for mine virtual machine test cases
 
-- /role/port2role
-- /role/dns2role
+- /rolefinder/port2role
+- /rolefinder/dns2role
 - /relation/dependencyMatrix
 - /relation/cpd_tables
 - /pivotscore/role_score
+
 **h0rus**:
 - **Zero-Dependency Parser:** Parses Nmap XML and Traceroute logs using pure Python without NPSL licensing conflicts.
 - **h0rus is able to use OS data for generating a topology
