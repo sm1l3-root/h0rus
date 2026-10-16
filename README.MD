@@ -17,7 +17,13 @@ Network Topology Generator , Ghost Node And Role Finder, Pivot Score Generating 
 Existing network discovery tools either produce static, uncontextualized topology diagrams (like Zenmap) or demand invasive agent installations and credentialed domain access (like BloodHound);
 Also neither them is using h0rus methodology to inspecting network, BloodHound is only searches Active Directory machines but h0rus make his decisions by ttl,  port and role dependency so h0rus is able to detect non-AD machines also;
 	
+Disclaimer!!!: If you want to test the software you might wanna optimize or change the data files given below right now all the datas are adjusted for mine virtual machine test cases
 
+- /role/port2role
+- /role/dns2role
+- /relation/dependencyMatrix
+- /relation/cpd_tables
+- /pivotscore/role_score
 **h0rus**:
 - **Zero-Dependency Parser:** Parses Nmap XML and Traceroute logs using pure Python without NPSL licensing conflicts.
 - **h0rus is able to use OS data for generating a topology
