@@ -24,7 +24,8 @@ Also neither them is using h0rus's methodology to inspecting network, BloodHound
 - **Calculating a PivotScore:** for Red Teaming scenarios h0rus is able to calculate a pivotscore and arrange the nodes sizes by the score for a Red Team operator to select the most strategical lateral movement node in seconds 
 - **Finding Vulnerabilities:** h0rus is able to find known vulnerabilities by searching nodes ports services in Searchsploit DB publicly open exploit db without without any interruptions to the license intervals with its own parser
    
-**The files that you want to look at for optimizing statistical part of the h0rus**
+!!!The files that you want to look at for optimizing statistical part of the h0rus
+
 	/rolefinder/dns2role.json
 	/rolefinder/port2role.json
 	/relation/dependencyMatrix.json
