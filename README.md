@@ -1,4 +1,5 @@
-# 🦅 h0rus - Community Edition Network Topology Generator , Ghost Node And Role Finder And Pivot Score Generating Penetration Testing Network Scanning analyzing and auto-decide featured Tool that makes 2 or 3 weeks job in 2-3 minutes   
+# 🦅 h0rus - Community Edition
+Network Topology Generator , Ghost Node And Role Finder And Pivot Score Generating Penetration Testing Network Scanning analyzing and auto-decide featured Tool that makes 2 or 3 weeks job in 2-3 minutes   
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
