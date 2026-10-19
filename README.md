@@ -18,11 +18,18 @@ Also neither them is using h0rus's methodology to inspecting network, BloodHound
 
 **h0rus**:
 - **Zero-Dependency Parser:** Parses Nmap XML and Traceroute logs using pure Python without NPSL licensing conflicts.
-- **h0rus is able to use OS data for generating a topology
+- **h0rus is also able to use OS data for generating a topology unlike other network scanners**
 - **Mathematical Role Inference:** Classifies node roles (e.g., Domain Controller, Gateway, Database) using statistical **Weighted Jaccard** similarity scores instead of rigid hardcoded guesses.
 - **Ghost Node & Pivot Analysis:** Uncovers hidden nodes that do not directly respond to scans but create traffic dependencies with **Bayes Network Theorem** and dependency matrices, also operator has all control on the parameters and able to edit through the files. 
-- **Calculating a **PivotScore: ** for Red Teaming and Threat Hunting scenarios h0rus is able to calculate a pivotscore and arrange the nodes sizes by the score for a Red Team operator to select the most strategical lateral movement node in seconds 
-
+- **Calculating a PivotScore:** for Red Teaming scenarios h0rus is able to calculate a pivotscore and arrange the nodes sizes by the score for a Red Team operator to select the most strategical lateral movement node in seconds 
+- **Finding Vulnerabilities:** h0rus is able to find known vulnerabilities by searching nodes ports services in Searchsploit DB publicly open exploit db without without any interruptions to the license intervals with its own parser
+   
+**The files that you want to look at for optimizing statistical part of the h0rus**
+	/rolefinder/dns2role.json
+	/rolefinder/port2role.json
+	/relation/dependencyMatrix.json
+	/relation/cpd_tables.json
+	/pivotscore/role_score.json
 ---
 
 ## What is a pivotscore and how it is working?
@@ -32,7 +39,8 @@ Also neither them is using h0rus's methodology to inspecting network, BloodHound
 pivotscore is a mathematical formule that i invented that determines a devices criticallity to attack for a Red Team operator automaticly.
 
 formule: 
-	<img width="362" height="316" alt="Image" src="https://github.com/user-attachments/assets/2bb5bd0d-04a0-4ac2-bc59-dfea2fcd13de" />
+
+<img width="362" height="316" alt="Image" src="https://github.com/user-attachments/assets/2bb5bd0d-04a0-4ac2-bc59-dfea2fcd13de" />
 
 But How?
 
@@ -43,7 +51,7 @@ and the power of (ghosts value scores role mean) is a really big number so i use
 
 <img width="1848" height="867" alt="Image" src="https://github.com/user-attachments/assets/93475251-cce3-463d-b96b-147f82f984ad" />
 
-## 🖥️ Topographic Visualization Rules
+##  Topographic Visualization Rules
 
 The generated dynamic HTML/Canvas topology map applies the following visual semantics:
 
