@@ -1,0 +1,209 @@
+{
+  "version": "1.1",
+  "target_tool": "h0rus_GhostFinder",
+  "role_dependencies": {
+    "Web_Server": {
+      "description": "HTTP/HTTPS servisleri sunan web düğümü",
+      "direct_dependencies": [
+        {
+          "role_name": "Database_Server",
+          "criticality": "HIGH",
+          "relationship_type": "DATA_PERSISTENCE",
+          "discriminative_ports": [3306, 5432, 1433, 1521, 27017, 6379],
+          "port_weight": [0.2, 0.3, 0.2, 0.1, 0.4, 0.1],
+          "probability": 0.85
+        },
+        {
+          "role_name": "Reverse_Proxy_LoadBalancer",
+          "criticality": "MEDIUM",
+          "relationship_type": "INGRESS_TRAFFIC",
+          "discriminative_ports": [8443, 9000, 10000],
+          "port_weight": [0.2, 0.3, 0.2],
+          "probability": 0.35
+        },
+        {
+          "role_name": "Internal_DNS_Server",
+          "criticality": "HIGH",
+          "relationship_type": "NAME_RESOLUTION",
+          "discriminative_ports": [53],
+          "port_weight": [0.5],
+          "probability": 0.9
+        },
+        {
+          "role_name": "Authentication_Identity_Provider",
+          "criticality": "MEDIUM",
+          "relationship_type": "AUTH_VERIFICATION",
+          "discriminative_ports": [88, 389, 636],
+          "port_weight": [0.2, 0.3, 0.2],
+          "probability": 0.5
+        },
+        {
+          "role_name": "Application_Gateway_Egress",
+          "criticality": "LOW",
+          "relationship_type": "OUTBOUND_API_CALL",
+          "discriminative_ports": [8081, 9090],
+          "port_weight": [0.2, 0.3],
+          "probability": 0.3
+        }
+      ]
+    },
+
+    "Domain_Controller": {
+      "description": "Active Directory / Kerberos kimlik doğrulama düğümü",
+      "direct_dependencies": [
+        {
+          "role_name": "Primary_DNS_Server",
+          "criticality": "CRITICAL",
+          "relationship_type": "AD_INTEGRATED_DNS",
+          "discriminative_ports": [53],
+          "port_weight": [0.5],
+          "probability": 0.95
+        },
+        {
+          "role_name": "CA_Certificate_Authority",
+          "criticality": "HIGH",
+          "relationship_type": "PKI_CERT_ISSUANCE",
+          "discriminative_ports": [135, 8200],
+          "port_weight": [0.2, 0.3],
+          "probability": 0.5
+        },
+        {
+          "role_name": "Secondary_Domain_Controller",
+          "criticality": "HIGH",
+          "relationship_type": "SYSVOL_REPLICATION",
+          "discriminative_ports": [3269, 3268, 5722, 9389],
+          "port_weight": [0.5, 0.3, 0.2, 0.3],
+          "probability": 0.25
+        }
+      ]
+    },
+
+    "Database_Server": {
+      "description": "SQL / NoSQL veri depolama düğümü",
+      "direct_dependencies": [
+        {
+          "role_name": "Central_Storage_SAN_NAS",
+          "criticality": "HIGH",
+          "relationship_type": "STORAGE_MOUNT_iSCSI_NFS",
+          "discriminative_ports": [860, 2049, 3260],
+          "port_weight": [0.2, 0.3, 0.2],
+          "probability": 0.6
+        },
+        {
+          "role_name": "Backup_Server",
+          "criticality": "MEDIUM",
+          "relationship_type": "PERIODIC_BACKUP",
+          "discriminative_ports": [6162, 9102, 10000],
+          "port_weight": [0.2, 0.3, 0.2],
+          "probability": 0.7
+        }
+      ]
+    },
+
+    "Application_Server": {
+      "description": "İş mantığı çalıştıran arka plan uygulama sunucusu (Java, .NET, Node.js)",
+      "direct_dependencies": [
+        {
+          "role_name": "Database_Server",
+          "criticality": "CRITICAL",
+          "relationship_type": "DATA_QUERY",
+          "discriminative_ports": [1433, 3306, 5432, 1521, 27017],
+          "port_weight": [0.2, 0.3, 0.2, 0.2, 0.3],
+          "probability": 0.9
+        },
+        {
+          "role_name": "Message_Broker_Queue",
+          "criticality": "MEDIUM",
+          "relationship_type": "ASYNC_TASK_QUEUE",
+          "discriminative_ports": [5672, 9092, 6379, 61616],
+          "port_weight": [0.2, 0.3, 0.2, 0.3],
+          "probability": 0.55
+        },
+        {
+          "role_name": "Web_Server",
+          "criticality": "HIGH",
+          "relationship_type": "REVERSE_PROXY_SOURCE",
+          "discriminative_ports": [8080, 8000, 9000],
+          "port_weight": [0.2, 0.3, 0.2],
+          "probability": 0.6
+        }
+      ]
+    },
+
+    "Virtualization": {
+      "description": "Hypervisor ve sanallaştırma yönetim düğümü (VMware ESXi/vCenter, Proxmox, Hyper-V)",
+      "direct_dependencies": [
+        {
+          "role_name": "Central_Storage_SAN_NAS",
+          "criticality": "CRITICAL",
+          "relationship_type": "DATASTORE_MOUNT_iSCSI_NFS",
+          "discriminative_ports": [860, 2049, 3260],
+          "port_weight": [0.2, 0.3, 0.5],
+          "probability": 0.85
+        },
+        {
+          "role_name": "Central_Management_vCenter_Proxmox",
+          "criticality": "HIGH",
+          "relationship_type": "HYPERVISOR_CLUSTER_MGMT",
+          "discriminative_ports": [443, 902, 8006, 8008],
+          "port_weight": [0.2, 0.4, 0.3, 0.1],
+          "probability": 0.75
+        },
+        {
+          "role_name": "Authentication_Identity_Provider",
+          "criticality": "MEDIUM",
+          "relationship_type": "SSO_AD_AUTH",
+          "discriminative_ports": [389, 636, 88],
+          "port_weight": [0.3, 0.4, 0.3],
+          "probability": 0.60
+        },
+        {
+          "role_name": "Backup_Server",
+          "criticality": "HIGH",
+          "relationship_type": "VM_SNAPSHOT_BACKUP",
+          "discriminative_ports": [6162, 9102, 10000],
+          "port_weight": [0.3, 0.4, 0.3],
+          "probability": 0.65
+        }
+      ]
+    },
+
+    "Linux_Management": {
+      "description": "Linux/Unix altyapı yönetim, otomasyon ve merkezi loglama düğümü (Ansible, Puppet, Chef, Salt, Bastion)",
+      "direct_dependencies": [
+        {
+          "role_name": "Target_Linux_Nodes",
+          "criticality": "HIGH",
+          "relationship_type": "SSH_ORCHESTRATION_AUTOMATION",
+          "discriminative_ports": [22, 2222],
+          "port_weight": [0.8, 0.2],
+          "probability": 0.90
+        },
+        {
+          "role_name": "Central_Logging_Monitoring",
+          "criticality": "MEDIUM",
+          "relationship_type": "SYSLOG_TELEMETRY_EXPORTER",
+          "discriminative_ports": [514, 1514, 9100, 9090],
+          "port_weight": [0.2, 0.3, 0.3, 0.2],
+          "probability": 0.70
+        },
+        {
+          "role_name": "Internal_Package_Repository",
+          "criticality": "MEDIUM",
+          "relationship_type": "PACKAGE_UPDATE_MIRROR",
+          "discriminative_ports": [80, 443, 8081],
+          "port_weight": [0.3, 0.4, 0.3],
+          "probability": 0.50
+        },
+        {
+          "role_name": "Configuration_Management_Server",
+          "criticality": "MEDIUM",
+          "relationship_type": "PUPPET_SALT_MASTER_CONTROL",
+          "discriminative_ports": [8140, 4505, 4506],
+          "port_weight": [0.4, 0.3, 0.3],
+          "probability": 0.40
+        }
+      ]
+    }
+  }
+}

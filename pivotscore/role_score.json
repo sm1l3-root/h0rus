@@ -1,0 +1,55 @@
+{
+  "Role_Scores": {
+    "Internal_DNS_Server": {
+      "score": 1.0
+    },
+    "Database_Server": {
+      "score": 0.80
+    },
+    "Primary_DNS_Server": {
+      "score": 1.0
+    },
+    "CA_Certificate_Authority": {
+      "score": 0.40
+    },
+    "Secondary_Domain_Controller": {
+      "score": 0.95
+    },
+    "Target_Linux_Nodes": {
+      "score": 0.50
+    },
+    "Central_Storage_SAN_NAS": {
+      "score": 0.40
+    },
+    "Reverse_Proxy_LoadBalancer": {
+      "score": 0.35
+    },
+    "Authentication_Identity_Provider": {
+      "score": 0.50
+    },
+    "Application_Gateway_Egress": {
+      "score": 0.30
+    },
+    "Backup_Server": {
+      "score": 0.70
+    },
+    "Message_Broker_Queue": {
+      "score": 0.55
+    },
+    "Web_Server": {
+      "score": 0.60
+    },
+    "Central_Management_vCenter_Proxmox": {
+      "score": 0.60
+    },
+    "Central_Logging_Monitoring": {
+      "score": 0.70
+    },
+    "Internal_Package_Repository": {
+      "score": 0.50
+    },
+    "Configuration_Management_Server": {
+      "score": 0.40
+    }
+  }
+}

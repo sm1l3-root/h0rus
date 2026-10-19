@@ -1,0 +1,55 @@
+{
+  "test_suite_name": "h0rus_GhostBuster_Evaluation_Cases",
+  "version": "1.0",
+  "test_cases": {
+    "TC-01": {
+      "description": "Standard Web Server (Arkası Dolu - DB ve Auth Ghost Node Bekleniyor)",
+      "visible_node": {
+        "ip": "10.154.142.50",
+        "port_role": "Web_Server",
+        "dns_role": "Domain_Controller",
+        "open_ports": [53,80, 443, 8080],
+        "ttl": 128,
+        "connected_before": ["10.154.142.182"],
+        "connected_after": []
+      },
+      "expected_ghosts": [
+        {
+          "role_name": "Database_Server",
+          "relationship": "DATA_PERSISTENCE",
+          "criticality": "HIGH"
+        },
+        {
+          "role_name": "Internal_DNS_Server",
+          "relationship": "NAME_RESOLUTION",
+          "criticality": "HIGH"
+        }
+      ]
+    },
+    
+    "TC-02": {
+      "description": "Active Directory Domain Controller (Arkası Dolu - Primary DNS ve CA Ghost Bekleniyor)",
+      "visible_node": {
+        "ip": "10.10.5.10",
+        "port_role": "Domain_Controller",
+        "dns_role": "Domain_Controller",
+        "open_ports": [53, 88, 135, 389, 445, 3268],
+        "ttl": 127,
+        "connected_before": ["10.10.5.1"],
+        "connected_after": ["10.10.5.11"]
+      },
+      "expected_ghosts": [
+        {
+          "role_name": "Primary_DNS_Server",
+          "relationship": "AD_INTEGRATED_DNS",
+          "criticality": "CRITICAL"
+        },
+        {
+          "role_name": "CA_Certificate_Authority",
+          "relationship": "PKI_CERT_ISSUANCE",
+          "criticality": "HIGH"
+        }
+      ]
+    }
+  }
+}
