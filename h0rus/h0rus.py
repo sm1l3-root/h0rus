@@ -19,7 +19,13 @@ def main():
     ascii_banner = pyfiglet.figlet_format("welcome to h0rus ! !", font="graffiti")
     print(Fore.RED + Style.BRIGHT + ascii_banner)
     
-    
+    outputfile = input("ENTER OUTPUT FILE NAME EX: horus_out.html -----> ")
+    if not outputfile.strip():
+        print(Fore.YELLOW + "[!] YOU MUST ENTER A OUTPUT FILE!!!")
+        return
+    if not outputfile.lower().endswith((".html")):
+        outputfile += ".html"
+        
     target_network = input("ENTER TARGET NETWORK EX: 192.168.1.0/24 -----> ").strip()
     if not target_network:
         print(Fore.YELLOW + "[!] You Must to enter a target network.")
@@ -47,8 +53,8 @@ def main():
     PivotScore.Calculate()
 
     print(Fore.CYAN + "[*] Adım 8: Node and Edges are calculating...")
-    gui.generate_topology_map(NodeEdge.CollectGs())
-    
+    gui.generate_topology_map(NodeEdge.CollectGs(),outputfile)
+    print(Fore.GREEN + "\n[+] known vulnerabilities in services are saved in knownVulns.txt!!!")
     print(Fore.GREEN + "\n[+] h0rus successfully runned!")
 
 if __name__ == "__main__":

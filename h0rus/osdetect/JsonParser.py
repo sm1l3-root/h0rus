@@ -118,8 +118,9 @@ class Parse():
         allinterfaces = [item.get("InterfaceAlias") for item in Pdata if isinstance(item, dict) and item.get("InterfaceAlias") is not None]
         allipv4= [item.get("IPv4Addresses") for item in Pdata if isinstance(item, dict) and item.get("IPv4Addresses") is not None]
         alldns = [item.get("DNSServers").get("value") if isinstance(item.get("DNSServers"), dict) else item.get("DNSServers") for item in Pdata if isinstance(item, dict) and item.get("DNSServers") is not None]
+        
         return (
-            f"Interfacealias\n{str(allinterfaces)}\n"
+            f"InterfaceAlias\n{str(allinterfaces)}\n"
             f"\nIpv4addresses\n{str(allipv4)}\n"
             f"\nDNSservers\n{str(alldns)}DnsEnd\n"            
         )

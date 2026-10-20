@@ -2,7 +2,7 @@ from pyvis.network import Network
 from report.NodeEdge import NodeEdge
 import math
 class gui():
-    def generate_topology_map(G, output_html="h0rus_topology.html"):
+    def generate_topology_map(G, output_html):
         net = Network(
         height="850px", 
         width="100%", 
@@ -36,9 +36,10 @@ class gui():
             pivotscore= data.get("pivot_score", "N/A")
             os = data.get("os", "N/A")
             open_ports=data.get("open_ports", "N/A")
-        
+            interface= data.get("ipconf_interface", "N/A")
             if str(node).strip() == "me":
                 cat = "me"
+            
 
             style = category_styles.get(cat, {"color": "#9399b2", "size": 15, "shape": "dot"})
         #print("pivot score value in gui")
@@ -66,8 +67,9 @@ class gui():
         # Düğüm üstüne IP metni ekleyip fareyle üstüne gelince detay gösterelim
             G.nodes[node]["label"] = str(node)
             G.nodes[node]["title"] = f"Node ID: {node}\nCategory: {cat}\nRole: {role}\nPivot Score: {pivotscore}\nOS: {os}\nOpen Ports: {open_ports}"
-
-   
+            if cat == "ipconf_dns_source" and interface:
+                G.nodes[node]["title"] = f"Node ID: {node}\nCategory: {cat}\nRole: {role}\nPivot Score: {pivotscore}\nOS: {os}\nOpen Ports: {open_ports}\nInterface: {interface}"
+            
         for u, v, data in G.edges(data=True):
             rel = data.get("category", data.get("relation", ""))
             lport = data.get("localport", "")

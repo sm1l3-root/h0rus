@@ -73,28 +73,33 @@ class ParseOSdata():
 
    
     def ipconf_data():
-        dns_conn,ipv4_conn = Relate.ipconf()
+        dns_conn,ipv4_conn,interface = Relate.ipconf()
         stripped_dns_conn = dns_conn[0]
+        
         dns_source=[]
         dns_end=[]
-        #dns_inter=[]
+        dns_inter=[]
         for source,end in zip(stripped_dns_conn['source'],stripped_dns_conn['end']):
             dns_source.append(source)
             dns_end.append(end)
-            #dns_inter.append(inter)
+            
         ipv4_source=[]
         ipv4_end=[]
         stripped_ipv4= ipv4_conn[0]
         #print(stripped_ipv4["source"])
-        for end in stripped_ipv4["end"]:
+        for end,inter in zip(stripped_ipv4["end"], interface):
             ipv4_end.append(end)
-
+            
             ipv4_source.append(stripped_ipv4["source"])
-
-        #print(ipv4_source)
+            print("append ediliyor")
+            print(inter)
+            
+            dns_inter.append(inter)
+        #print("nodedge dns inter dönüyor")
+        #print(dns_inter)
         
         #stripped_ipv4_end=ipv4_end[0]
-        return dns_source,dns_end , ipv4_source,ipv4_end
+        return dns_source,dns_end , ipv4_source,ipv4_end,dns_inter
         """print (dns_source)
         print (dns_end)
         #print(dns_inter)
@@ -227,7 +232,7 @@ class NodeEdge():
         """print(G.edges(data=True))"""
         
     def ipconf():
-        dns_source,dns_end , ipv4_source,ipv4_end=ParseOSdata.ipconf_data()
+        dns_source,dns_end , ipv4_source,ipv4_end,dns_inter=ParseOSdata.ipconf_data()
         #print(ipv4_source)
         #print(ipv4_end)
         G.add_nodes_from(ipv4_source, category="ipconf_ipv4_source")
@@ -238,7 +243,21 @@ class NodeEdge():
         G.add_edges_from(ipv4_edges, category="ipconf_edges")
         
         G.add_nodes_from(dns_source,category="ipconf_dns_source")
-        
+        dns_interface_map = {}
+
+        for ip, inter in zip(dns_source, dns_inter):
+            # 1. Eğer 'inter' iç içe bir liste veya elemanları liste ise:
+            if isinstance(inter, (list, tuple)):
+                # Liste elemanları string mi yoksa karakter mi kontrolü
+                dns_interface_map[ip] = ", ".join(map(str, inter))
+            # 2. Eğer 'inter' zaten tek parça bir string ise (KESİNLİKLE bölme, doğrudan ata):
+            elif isinstance(inter, str):
+                dns_interface_map[ip] = inter
+            # 3. None veya boş veri durumu:
+            else:
+                dns_interface_map[ip] = str(inter) if inter else ""
+        # 3. Hazırlanan haritayı var olan düğümlere öznitelik olarak ata
+        nx.set_node_attributes(G, dns_interface_map, name="ipconf_interface")
         
         dns_nodes_end = [
             target 
@@ -262,7 +281,7 @@ class NodeEdge():
         G.add_nodes_from(end, category="neigh")
         edges=zip(source,end)
         G.add_edges_from(edges, category="neigh_edges")
-        print(G.edges(data=True))
+        #print(G.edges(data=True))
         
 
     def NetTCP():
@@ -358,6 +377,9 @@ class NodeEdge():
                     
                 
     def SearchSploitDB():
+        def writeOutput(outputdata):
+            f = open("knownVulns.txt","w+")
+            f.write(outputdata)
         print("SERVICEs ARE SEARCHING IN SEARCHSPLOT DB")
         df = ParsePivots.OpenJson()
         pivot_ips = df["ip"].tolist()
@@ -379,12 +401,22 @@ class NodeEdge():
                 results = db[condition]
                 parsed_res = results[['id', 'file', 'description', 'port']]
                 
-                print("*"*20)
+                """print("*"*20)
                 print(ip)  
                 print("*"*20)
                 print(serv)
                 print("*"*20)
-                print(parsed_res)  
+                print(parsed_res)"""
+                if not parsed_res.empty:
+                    output_text = (
+                        f"IP: {ip}\n"
+                        f"Service: {serv}\n"
+                        f"********************\n"
+                        f"{parsed_res.to_string()}\n\n"
+                        f"********************\n"
+                    )
+                    writeOutput(output_text) 
+                    
     def PivotScore():
         df = ParsePivots.OpenJson()
         #service = ParseServices.ParseJson()

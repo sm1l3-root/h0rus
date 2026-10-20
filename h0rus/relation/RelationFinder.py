@@ -118,18 +118,20 @@ class Inspect():
         ipv4dds=[]
         dnsservers=[]
         
-        #interfacealiases.append(Regex.regex("InterfaceAlias","Ipv4Addresses",ndata))
+        interfacealiases.append(Regex.regex("InterfaceAlias","Ipv4addresses",ndata))
         ipv4dds.append(Regex.regex("Ipv4addresses","DNSservers",ndata))
         dnsservers.append(Regex.regex("DNSservers","DnsEnd",ndata))
-        #interfacealiases=ast.literal_eval(interfacealiases[0])
+        interfacealiases=ast.literal_eval(interfacealiases[0])
         ipv4dds=ast.literal_eval(ipv4dds[0])
         dnsservers=ast.literal_eval(dnsservers[0])
+        #print(interfacealiases)
         return {
-            #"interfacealias": interfacealiases,
+            "interfacealias": interfacealiases,
             "ipv4adds": ipv4dds,
             "dnsservers": dnsservers
             
         }
+        
     def NetTCPConf():
         ndata=Parse.NetTcpConn()
         
@@ -290,12 +292,12 @@ class Relate():
         
         dns=ipconf_data["dnsservers"]
         ipv4=ipconf_data["ipv4adds"]
-        #inter=ipconf_data["interfacealias"]
+        inter=ipconf_data["interfacealias"]
         dns_conn.append({
                 
             "source": ipv4,
             "end": dns,
-            #"interface": inter
+            
                     
         })
         ipv4_conn.append({
@@ -306,7 +308,7 @@ class Relate():
 
         #print (dns_conn, ipv4_conn)
         #print("relation finder döndü")
-        return dns_conn , ipv4_conn
+        return dns_conn , ipv4_conn,inter
     
 
     @staticmethod
@@ -362,11 +364,9 @@ class Relate():
 
         return gateway_conn,samesub_conn, local_conn
 
-
-"""if __name__ == "__main__":
-    Relate.Arp()
-    Relate.Gateway()
-    Relate.RouteData()
-    Relate.neigh()
-    Relate.ipconf()
-    Relate.NetTCPConn()"""
+"""
+if __name__ == "__main__":
+    print("netipconf data")
+    print("*"*20)
+    print(Relate.ipconf())
+    print("*"*20)"""
