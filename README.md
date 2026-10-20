@@ -3,7 +3,7 @@ Network Topology Generator , Ghost Node And Role Finder And Pivot Score Generati
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
-[![Release](https://img.shields.io/badge/version-v0.10.0--alpha-red.svg)](#)
+[![Release](https://img.shields.io/badge/version-v0.11.0--alpha-red.svg)](#)
 
 > **h0rus** is an autonomous recognition and network analysis framework that transforms passive **Nmap, Traceroute, DNS, ARP, and OS command outputs** into actionable intelligence. By leveraging **Weighted Jaccard Similarity** and **Bayesian Network Theorems**, h0rus classifies host roles, detects **TTL/Hop anomalies**, and identifies hidden **Ghost Nodes** through dependency matrices.
 >
@@ -22,7 +22,7 @@ Also neither them is using h0rus's methodology to inspecting network, BloodHound
 - **Mathematical Role Inference:** Classifies node roles (e.g., Domain Controller, Gateway, Database) using statistical **Weighted Jaccard** similarity scores instead of rigid hardcoded guesses.
 - **Ghost Node & Pivot Analysis:** Uncovers hidden nodes that do not directly respond to scans but create traffic dependencies with **Bayes Network Theorem** and dependency matrices, also operator has all control on the parameters and able to edit through the files. 
 - **Calculating a PivotScore:** for Red Teaming scenarios h0rus is able to calculate a pivotscore and arrange the nodes sizes by the score for a Red Team operator to select the most strategical lateral movement node in seconds 
-- **Finding Vulnerabilities:** h0rus is able to find known vulnerabilities by searching nodes ports services in Searchsploit DB publicly open exploit db without without any interruptions to the license intervals with its own parser
+- **Finding Vulnerabilities:** h0rus is able to find known vulnerabilities by searching nodes ports services in Searchsploit DB publicly open exploit db without without any interruptions to the license intervals with its own parser and writes to an output file 
    
 !!!The files that you want to look at for optimizing statistical part of the h0rus
 
@@ -59,7 +59,7 @@ The generated dynamic HTML/Canvas topology map applies the following visual sema
 * 🔴 **Red Nodes:** Active devices analyzed by the **GhostBuster Engine**.
 * 🌟 **Star-Shaped Nodes:** Discovered **Ghost Nodes** (unresponsive or hidden targets).
 * 📐 **Node Sizing:** Node size scales proportionally with its calculated **PivotScore**. Larger nodes signify prime candidates for lateral movement.
-* 🖱️ **Interactive Hover:** Hovering over any node displays its inferred role , open ports , OS and exact PivotScore.
+* 🖱️ **Interactive Hover:** Hovering over any node displays its inferred role , open ports , OS , interface data and exact PivotScore .
 
 ---
 
@@ -94,9 +94,7 @@ We are actively developing **h0rus** to expand its threat-hunting capabilities, 
 
 ### 🟢 Short-Term (v0.9.5-beta)
 - [ ] **Dynamic Exploit Severity Scoring:** Integrate CVSS v3.1 criticality mapping (Critical, High, Medium) directly into matched Searchsploit/Exploit-DB vulnerabilities.
-- [ ] **Advanced CLI Argument Parsing:** Migration to robust `argparse` execution flags (e.g., `python h0rus.py -t 192.168.1.0/24 --output json`).
 - [ ] **Graceful Error & Guard Clauses:** Enhanced fallback mechanisms for single-host topologies, empty ARP tables, and unprivileged raw socket execution.
-- [ ] **Adding interface names to the topology for arp interfaces and categorys them automaticly
 - [ ] **Adding the linux command outputs and parseing the outputs for relationfinder
 ### 🟡 Mid-Term (v1.0.0-stable)
 - [ ] **Running GhostBuster and PivotScore algorithms on OS relation data 
@@ -114,7 +112,7 @@ We are actively developing **h0rus** to expand its threat-hunting capabilities, 
 
 Developer: Efe Dora Cankardeş -> sm1l3
 
-Project Status: v0.10.0-alpha (Public Alpha)
+Project Status: v0.11.0-alpha (Public Alpha)
 
 Pull requests and issue reports are welcome! For major architectural changes, please open an issue first to discuss what you would like to change.
 
