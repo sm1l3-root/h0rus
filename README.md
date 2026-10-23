@@ -96,6 +96,7 @@ We are actively developing **h0rus** to expand its threat-hunting capabilities, 
 - [ ] **Dynamic Exploit Severity Scoring:** Integrate CVSS v3.1 criticality mapping (Critical, High, Medium) directly into matched Searchsploit/Exploit-DB vulnerabilities.
 - [ ] **Graceful Error & Guard Clauses:** Enhanced fallback mechanisms for single-host topologies, empty ARP tables, and unprivileged raw socket execution.
 - [ ] **Adding the linux command outputs and parseing the outputs for relationfinder
+- [ ] **Adding password spraying for smb and ssh services
 ### 🟡 Mid-Term (v1.0.0-stable)
 - [ ] **Running GhostBuster and PivotScore algorithms on OS relation data 
 - [ ] **Making a lightweight executable script version 
