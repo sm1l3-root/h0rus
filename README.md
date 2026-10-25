@@ -22,8 +22,8 @@ Also neither them is using h0rus's methodology to inspecting network, BloodHound
 - **Mathematical Role Inference:** Classifies node roles (e.g., Domain Controller, Gateway, Database) using statistical **Weighted Jaccard** similarity scores instead of rigid hardcoded guesses.
 - **Ghost Node & Pivot Analysis:** Uncovers hidden nodes that do not directly respond to scans but create traffic dependencies with **Bayes Network Theorem** and dependency matrices, also operator has all control on the parameters and able to edit through the files. 
 - **Calculating a PivotScore:** for Red Teaming scenarios h0rus is able to calculate a pivotscore and arrange the nodes sizes by the score for a Red Team operator to select the most strategical lateral movement node in seconds 
-- **Finding Vulnerabilities:** h0rus is able to find known vulnerabilities by searching nodes ports services in Searchsploit DB publicly open exploit db without without any interruptions to the license intervals with its own parser and writes to an output file 
--**Password Spray Attack:** h0rus is able to detect ssh and smb services and make a password spray attack on those ip addresses
+- **Finding Vulnerabilities:** h0rus is able to find known vulnerabilities by searching nodes ports services in Searchsploit DB publicly open exploit db without without any interruptions to the license intervals with its own parser and writes to an output file
+- **Password Spray Attack:** h0rus is able to detect ssh and smb services and make a password spray attack on those ip addresses
   
 !!!The files that you want to look at for optimizing statistical part of the h0rus
 
