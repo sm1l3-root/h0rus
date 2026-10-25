@@ -32,6 +32,10 @@ Also neither them is using h0rus's methodology to inspecting network, BloodHound
 	/relation/dependencyMatrix.json
 	/relation/cpd_tables.json
 	/pivotscore/role_score.json
+	/scan/smbpasslist.txt
+	/scan/smbuserlist.txt
+	/scan/sshpasslist.txt
+	/scan/sshuserlist.txt
 ---
 
 ## What is a pivotscore and how it is working?
