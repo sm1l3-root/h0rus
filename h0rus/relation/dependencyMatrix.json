@@ -99,7 +99,7 @@
         }
       ]
     },
-
+    
     "Application_Server": {
       "description": "İş mantığı çalıştıran arka plan uygulama sunucusu (Java, .NET, Node.js)",
       "direct_dependencies": [

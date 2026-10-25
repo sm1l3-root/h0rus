@@ -1,7 +1,8 @@
-when you hower the nodes you can able to see os and port data
-right now you can able to select any name for output file
-with this update h0rus can able to write the known vulnerabilities to a output file instead of just terminal
-right now in hower you can able to see interface data of the nodes
-PATCH with this update i fix the bug in netipconf function in relationfinder algorithm that returns interface data [None]  
+Release Notes – v1.0.0-alpha
+Robust Exception Handling: Added dedicated Unknown Role and port exception controls across port2role and GhostBuster.
 
-versiyon alpha 0.11.0
+Bug Fixes: Resolved index alignment and offset bugs within the RoleFinder module.
+
+Active Recon & Auth: Integrated SMB and SSH Password Spraying capabilities.
+
+Full OS Data Pipeline Integration: OS-level discovery data is now seamlessly processed across Nmap, GhostBuster, RoleFinder, and PivotScore

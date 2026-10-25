@@ -27,7 +27,7 @@
       }
     },
     "Virtualization": {
-      "mandatory_ports": [902, 8006,80, 443, 22],
+      "mandatory_ports": [902,912, 8006,80, 443, 22],
       "optional_ports": [],
       "weights": {
         "8006": 0.45,

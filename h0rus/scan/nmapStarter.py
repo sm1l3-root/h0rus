@@ -8,7 +8,8 @@ class Run():
             "-sV",                  # Service / Version Detection
             "-O",                   # OS Detection
             "--traceroute",         # Topoloji ve Hop Analizi
-            "-oX=scan.xml",     # XML Çıktı Dosyası
+            "-oX=scan.xml",         # XML Çıktı Dosyası
+            "-iL=nmaptargets.txt",
             target
         ]
         try:

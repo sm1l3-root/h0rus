@@ -377,8 +377,13 @@ class NodeEdge():
                     
                 
     def SearchSploitDB():
+        def cleanfile():
+            f = open("knownVulns.txt","w")
+            f.write("")
+
+        cleanfile()
         def writeOutput(outputdata):
-            f = open("knownVulns.txt","w+")
+            f = open("knownVulns.txt","a")
             f.write(outputdata)
         print("SERVICEs ARE SEARCHING IN SEARCHSPLOT DB")
         df = ParsePivots.OpenJson()

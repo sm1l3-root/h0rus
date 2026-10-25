@@ -35,6 +35,9 @@ class Json():
     def InspectMatrix(role):
         Matrixdata = json.loads(Json.openJson())["role_dependencies"]
         get_role=Matrixdata[role]
+        #print(get_role)
+        if not get_role:
+            return []
         get_role_data=get_role["direct_dependencies"]
         return get_role_data
 
@@ -86,8 +89,13 @@ class Write():
 class TEST():
     def get_port_role(name):
         load=Json.InspectTEST(name)
-        role=load.get("port2role", "Unknown Role")
-        return role
+        
+        if not load:
+            return "Unknown"
+        
+        
+        role=load.get("port2role")
+        return role #if role else "Unknown"
 
     def get_dns_role(name):
         load=Json.InspectTEST(name)
@@ -115,10 +123,10 @@ class GhostBuster():
     def Role_Match(name):
         dns=TEST.get_dns_role(name)
         port=TEST.get_port_role(name)
-        if port == dns:
-            return 1
-        else:
+        if not dns or port == "Unknown":
             return 0
+
+        return 1 if port == dns else 0
     @staticmethod
     def Dependency_names(name):
         role=Json.InspectMatrix(name)
@@ -276,17 +284,21 @@ class GhostBuster():
         return 0 
     @staticmethod
     def TTL(name):
-        if TEST.get_ttl(name) == (64 or 128 or 255):
-            return 0
-        else:
-            return 1
+        ttl = TEST.get_ttl(name)
+        if ttl in (64, 128, 255):
+            return 0  # Normal TTL (Anormallik yok)
+        return 1
         
     def Decide(name):
         
         role=TEST.get_port_role(name)
-        
+        if role == "Unknown" or not role:
+            print(f"[*] {name} cihazı 'Unknown' role sahip, Ghost tahmini atlanıyor.")
+            return
         
         dep_name=GhostBuster.Dependency_names(role)
+        if not dep_name:
+            return
         dep_port=GhostBuster.Dependency_ports(role)
         dep_score=GhostBuster.Dependency_score(role)
         dep_weight=GhostBuster.Dependency_port_weight(role)
@@ -304,7 +316,7 @@ class GhostBuster():
             #print(GhostBuster.Bayes(port,ttl,scores,match))
             
             if GhostBuster.Bayes(port,ttl,scores,match) == 1:
-                """
+                
                 print("Node")
                 print("-"*20)
                 print(role)
@@ -312,7 +324,7 @@ class GhostBuster():
                 print("Ghost Node")
                 print("-"*20)
                 print(names)
-                """
+            
                 output = ({
                     "Node Ip": ip,
                     "Node Role":role,
@@ -322,6 +334,7 @@ class GhostBuster():
                 
                 json_output = json.dumps(output)
                 Write.writeJson(json_output)
+                
             else:
                 pass
 

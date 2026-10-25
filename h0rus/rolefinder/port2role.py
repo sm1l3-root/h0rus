@@ -100,14 +100,15 @@ class Port2Role():
             inter_vector = mandatory_ports.intersection(set(target_vector))
             #mandatory_union = set(parser.roles.get("roles", {}).get(a, {}).get("mandatory_ports", {}))
             union = len(mandatory_ports.union(set(target_vector)))
-            #print("inter vector")
-            #print(inter_vector)
+            print("inter vector")
+            print(inter_vector)
             #print("manda union")
             #print(mandatory_union)
-            #print("union")
-            #print(union)
-            #print("role port values\n")
+            print("union")
+            print(union)
+            print("role port values\n")
             
+
             weight_sum = 0.0
             weighted_jaccard_sum_second = 0.0
             for i in inter_vector:
@@ -125,17 +126,21 @@ class Port2Role():
             weighted_jaccard_sum=((len(inter_vector) / union)+weight_sum)
             
             #print(weighted_jaccard_sum) 
+            
             weight_array.append(weighted_jaccard_sum) 
+            
             weight_sum = 0.0
 
 
         #print (weight_array)
-        decision = weight_array.index(max(weight_array))
-        #print("decision")
-        #print("*"*20)
-        #print(role_array[decision])
-        return role_array[decision]
-
+        if max(weight_array) != 0.0:
+            decision = weight_array.index(max(weight_array))
+            print("decision")
+            print("*"*20)
+            print(role_array[decision])
+            return role_array[decision]
+        else:
+            return "Unknown"
     def calcJaccard4ips():
         decision_ip=[]
         decisions=[]
@@ -145,8 +150,8 @@ class Port2Role():
         for port,ip in zip(result_ports,result_ip_array):
            
            
-                #print("calculating role for ip: ")
-                #print(ip)
+            print("calculating role for ip: ")
+            print(ip)
             decision=Port2Role.calcRoles(port)
                 #print(port)
             decision_ip.append(ip)
