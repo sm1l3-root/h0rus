@@ -7,7 +7,7 @@ Network Topology Generator , Ghost Node And Role Finder And Pivot Score Generati
 
 > **h0rus** is an autonomous recognition and network analysis framework that transforms passive **Nmap, Traceroute, DNS, ARP, and OS command outputs** into actionable intelligence. By leveraging **Weighted Jaccard Similarity** and **Bayesian Network Theorems**, h0rus classifies host roles, detects **TTL/Hop anomalies**, and identifies hidden **Ghost Nodes** through dependency matrices.
 >
-> Built with a custom mathematical formula (**PivotScore**), h0rus automatically determines the most strategic target for lateral movement—turning **2 to 3 weeks of manual reconnaissance into 2 to 3 minutes**.
+> Built with a custom mathematical formula (**PivotScore**), h0rus automatically determines the most strategic target for lateral movement—turning **2 to 3 weeks of manual reconnaissance into few minutes**.
 <img width="1458" height="716" alt="Image" src="https://github.com/user-attachments/assets/43474534-dbeb-48d2-8443-72c6e52ecb6c" />
 ---
 ## 📌 Why h0rus?
