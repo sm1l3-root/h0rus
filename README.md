@@ -100,6 +100,8 @@ We are actively developing **h0rus** to expand its threat-hunting capabilities, 
 ### 🟢 Short-Term (v1.0.1-beta)
 - [ ] **Dynamic Exploit Severity Scoring:** Integrate CVSS v3.1 criticality mapping (Critical, High, Medium) directly into matched Searchsploit/Exploit-DB vulnerabilities.
 - [ ] **Adding the linux command outputs and parseing the outputs for relationfinder
+- [ ] **Adding password spray result on the gui table
+- [ ] **safe update on NodeEdge table for all topology scan version
 ### 🟡 Mid-Term (v1.5.0-stable)
 - [ ] **Making a lightweight executable script version 
 - [ ] **with this lightweight version you able to add new hacked machines topologies to the main start-toplogy 
