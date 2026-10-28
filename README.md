@@ -3,7 +3,7 @@ Network Topology Generator , Ghost Node And Role Finder And Pivot Score Generati
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
-[![Release](https://img.shields.io/badge/version-v1.0.0--alpha-red.svg)](#)
+[![Release](https://img.shields.io/badge/version-v2.0.0--alpha-red.svg)](#)
 
 > **h0rus** is an autonomous recognition and network analysis framework that transforms passive **Nmap, Traceroute, DNS, ARP, and OS command outputs** into actionable intelligence. By leveraging **Weighted Jaccard Similarity** and **Bayesian Network Theorems**, h0rus classifies host roles, detects **TTL/Hop anomalies**, and identifies hidden **Ghost Nodes** through dependency matrices.
 >
@@ -24,7 +24,32 @@ Also neither them is using h0rus's methodology to inspecting network, BloodHound
 - **Calculating a PivotScore:** for Red Teaming scenarios h0rus is able to calculate a pivotscore and arrange the nodes sizes by the score for a Red Team operator to select the most strategical lateral movement node in seconds 
 - **Finding Vulnerabilities:** h0rus is able to find known vulnerabilities by searching nodes ports services in Searchsploit DB publicly open exploit db without without any interruptions to the license intervals with its own parser and writes to an output file
 - **Password Spray Attack:** h0rus is able to detect ssh and smb services and make a password spray attack on those ip addresses
-  
+- **Lightweight version:** h0rus has a lightwight version, you dont want to run multiple statistic models on a hacked machine and also you might wanna merge hacked machines topology with your main topology right now h0rus able to do both of these features, with this version h0rus is not gonna run the heavy statistical models on the target machine but h0rus start a scan like normal version and the outputs are inside a zip file that you decided, if you enter this zip file on h0rus and select the light version 
+then h0rus automaticlly unzip the file and run its statistical models on your computer instead of the target machine and gave you the normal output of h0rus.
+
+Lightweight version images:
+the image given in the below is h0rus's main screen for selecting lightweight version
+<img width="1391" height="161" alt="Image" src="https://github.com/user-attachments/assets/87552b47-bdaf-4fd1-a58f-c7536c1a9b2a" />
+ths image given in the below is h0rus's lightweight version scan results and parameters  
+<img width="1442" height="442" alt="Image" src="https://github.com/user-attachments/assets/b2807f25-d5a8-4021-b593-06a868fc3ad6" />
+this image given in the below is light versions help menu
+<img width="935" height="252" alt="Image" src="https://github.com/user-attachments/assets/ba0a53a4-1b7f-4c85-bdc0-6064d4197937" />
+
+**HOW TO USER LIGHT VERSION**
+- first you must to install (you might wanna compile the file) on the target machine
+- you must to install nmap on the machine
+- for help menu and parameters type "python h0ruslightWIN.py --help"
+- run the file like the second image for lightweight version
+- get the zip file on your own computer
+- run h0rus main program on your computer
+- for select light version you must type 1
+- move the zip file on your h0rus folder 
+- enter the path of your zip file in your h0rus folder
+- if you want to merge 2 topology's then select 1 if you want to use this scan result as a main scan then type 2
+- if you select merge option then you must have a topology.json file on your h0rus folder
+- topology.json file is an output file that contains all the topology data that generated after you run h0rus
+- if you select merge option than you able to merge the zip file and topology.json (in default topology.json is from your last scan and resets itself for the latest results everytime that you run h0rus you might wanna backup your topology.json files)  
+
 !!!The files that you want to look at for optimizing statistical part of the h0rus
 
 	/rolefinder/dns2role.json
@@ -57,15 +82,19 @@ and the power of (ghosts value scores role mean) is a really big number so i use
 
 <img width="1848" height="867" alt="Image" src="https://github.com/user-attachments/assets/93475251-cce3-463d-b96b-147f82f984ad" />
 
+<img width="830" height="507" alt="Image" src="https://github.com/user-attachments/assets/c91a11b0-dc36-40aa-90f0-50655dd153e5" />
+
+<img width="978" height="387" alt="Image" src="https://github.com/user-attachments/assets/5d2a1f7a-0daf-4db0-9427-0c02decb629a" />
+
 ##  Topographic Visualization Rules
 
 The generated dynamic HTML/Canvas topology map applies the following visual semantics:
 
-* 🔴 **Red Nodes:** Active devices analyzed by the **GhostBuster Engine**.
-* 🌟 **Star-Shaped Nodes:** Discovered **Ghost Nodes** (unresponsive or hidden targets).
-* 📐 **Node Sizing:** Node size scales proportionally with its calculated **PivotScore**. Larger nodes signify prime candidates for lateral movement.
-* 🖱️ **Interactive Hover:** Hovering over any node displays its inferred role , open ports , OS , interface data and exact PivotScore .
-
+*  **Red Nodes:** Active devices analyzed by the **GhostBuster Engine**.
+*  **Star-Shaped Nodes:** Discovered **Ghost Nodes** (unresponsive or hidden targets).
+*  **Node Sizing:** Node size scales proportionally with its calculated **PivotScore**. Larger nodes signify prime candidates for lateral movement.
+*  **Interactive Hover:** Hovering over any node displays its inferred role , open ports , OS , interface data and exact PivotScore .
+*  **Halo Nodes:** If you see a halo border on a node it means that this node has beem pwned by ssh or smb password spray attacks if nodes color is yellor then its pwned by ssh pass spray but if nodes color is blue then its pwned by smb pass spray.
 ---
 
 
@@ -103,8 +132,7 @@ We are actively developing **h0rus** to expand its threat-hunting capabilities, 
 - [ ] **Adding password spray result on the gui table
 - [ ] **safe update on NodeEdge table for all topology scan version
 ### 🟡 Mid-Term (v1.5.0-stable)
-- [ ] **Making a lightweight executable script version 
-- [ ] **with this lightweight version you able to add new hacked machines topologies to the main start-toplogy 
+- [ ] **LIGHTWEIGHT VERSION IS NOW AVAILABLE 
 
 ### 🔴 Enterprise Roadmap (Commercial Version)
 - [ ] **there is no public information for this section right now
@@ -113,11 +141,11 @@ We are actively developing **h0rus** to expand its threat-hunting capabilities, 
 
 ##Some Details!!!
 - Normally h0rus is able to run in both linux and windows systems but right now its able to RUN ON just windows machines
-- Also h0rusus datasets are right now configured to my vm test machines so you might wanna change the given files in the first section!!!
+- Also h0rus's datasets are right now configured to my vm test machines so you might wanna change the given files in the first section!!!
 
 Developer: Efe Dora Cankardeş -> sm1l3
 
-Project Status: v1.0.0-alpha (Public Alpha)
+Project Status: v2.0.0-alpha (Public Alpha)
 
 Pull requests and issue reports are welcome! For major architectural changes, please open an issue first to discuss what you would like to change.
 
