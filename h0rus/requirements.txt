@@ -17,5 +17,3 @@ ipaddress
 math
 pgmpy
 itertools
-paramiko
-smbprotocol

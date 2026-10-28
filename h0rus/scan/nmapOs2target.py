@@ -16,7 +16,7 @@ class os2target:
         ip2 = arp["dynamic_ips"]
         ip3 = neigh["neighbors"]
         ip4 = conn["remoteadds"]
-        iplist = list(set(ip1+ip2+ip3+ip4))
+        iplist = list(set(ip1))
 
         return iplist
 

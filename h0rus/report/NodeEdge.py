@@ -145,6 +145,16 @@ class ParseGhostBuster():
         
         df = pd.read_json('relation/output.jsonl', lines=True)
         return df
+
+class ParseSSHspray():
+    def parse():
+        df = pd.read_json("scan/sshPasSprayresults.jsonl", lines=True)
+        return df
+
+class ParseSMBspray():
+    def parse():
+        df = pd.read_json("scan/smbPasSprayresults.jsonl", lines=True)
+        return df
                 
 class ParseServices():
     #sadece pivotscore u olan ipleri alsın diğerlerini boşversin
@@ -441,7 +451,23 @@ class NodeEdge():
 
         )
         return G_trace
-    def CollectGs():
+
+    def smbspray():
+        df = ParseSMBspray.parse()
+        if df.empty:
+            pass
+        else:
+            df.set_index("ip", inplace=True)
+            nx.set_node_attributes(G, df.to_dict(orient="index"), name="smb_spray")
+
+    def sshspray():
+        df = ParseSSHspray.parse()
+        if df.empty:
+            pass
+        else:
+            df.set_index("ip", inplace= True)
+            nx.set_node_attributes(G, df.to_dict(orient="index"), name = "ssh_spray")
+    def CollectGs(update=None):
         G.clear()
         NodeEdge.arp()
         NodeEdge.ipconf()
@@ -454,9 +480,18 @@ class NodeEdge():
         NodeEdge.PivotScore()
         NodeEdge.metadata()
         NodeEdge.SearchSploitDB()
-        return G
+        NodeEdge.smbspray()
+        NodeEdge.sshspray()
+        if update == "update_topology":
+            G.update(NodeEdge.updateMain())
         
+        return G
+    def topologyjson():
+        json.dump(nx.node_link_data(G), open("topology.json", "w", encoding="utf-8"))
 
+    def updateMain():
+        G = nx.node_link_graph(json.load(open("topology.json", "r", encoding="utf-8")))
+        return G
 #print(NodeEdge.SearchSploitDB())
 #print(ParseServices.ParseJson())
 

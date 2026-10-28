@@ -10,7 +10,7 @@ class gui():
         font_color="#cdd6f4", 
         directed=True
         )
-    
+        #pwned sistemlerine etrafını "#8F0281" renk koduyla belirt
     
         category_styles = {
         "me": {"color": "#fab387", "size": 30, "shape": "square"},             # Turuncu Kare (Merkez)
@@ -21,7 +21,9 @@ class gui():
         "remote_socket": {"color": "#a6e3a1", "size": 14, "shape": "dot"},      # Yeşil Daire (Dış IP'ler)
         "dynamic_arp": {"color": "#f92af2", "size": 16, "shape": "star"},        # Sarı Yıldız (ARP)
         "ghost_detector": {"color": "#f92119", "size": 16, "shape": "dot"},
-        "ghost_node": {"color": "#ff6200", "size": 20 , "shape": "star"}
+        "ghost_node": {"color": "#ff6200", "size": 20 , "shape": "star"},
+        "smb_spray": {"color": "#139dff", "size": 20, "shape": "dot", "border": "#8F0281", "borderWidth": 7},
+        "ssh_spray": {"color": "#d0ff13", "size": 20, "shape": "dot", "border": "#8F0281", "borderWidth": 7}
         }
     # Pandas tarafında veya gui.py döngüsünden hemen önce:
         scores = [d.get("pivot_score") for _, d in G.nodes(data=True) if isinstance(d.get("pivot_score"), (int, float))]
@@ -37,6 +39,8 @@ class gui():
             os = data.get("os", "N/A")
             open_ports=data.get("open_ports", "N/A")
             interface= data.get("ipconf_interface", "N/A")
+            smbspray = data.get("smb_spray", "N/A")
+            sshspray = data.get("ssh_spray","N/A")
             if str(node).strip() == "me":
                 cat = "me"
             
@@ -69,7 +73,36 @@ class gui():
             G.nodes[node]["title"] = f"Node ID: {node}\nCategory: {cat}\nRole: {role}\nPivot Score: {pivotscore}\nOS: {os}\nOpen Ports: {open_ports}"
             if cat == "ipconf_dns_source" and interface:
                 G.nodes[node]["title"] = f"Node ID: {node}\nCategory: {cat}\nRole: {role}\nPivot Score: {pivotscore}\nOS: {os}\nOpen Ports: {open_ports}\nInterface: {interface}"
+            if smbspray != "N/A":
+                G.nodes[node]["category"] = "smb_spray"
+                cat = "smb_spray"
+                G.nodes[node]["shape"] = category_styles["smb_spray"]["shape"]
+                G.nodes[node]["size"] = category_styles["smb_spray"]["size"]
+                G.nodes[node]["borderWidth"] = category_styles["smb_spray"]["borderWidth"]
+
+                # Renk objesi şeklinde atanmalı (Kırmızı kalmaması için):
+                G.nodes[node]["color"] = {
+                    "background": category_styles["smb_spray"]["color"],
+                    "border": category_styles["smb_spray"]["border"],
+                }
+                G.nodes[node]["title"] = f"Node ID: {node}\nCategory: {cat}\nRole: {role}\nPivot Score: {pivotscore}\nOS: {os}\nOpen Ports: {open_ports}\nInterface: {interface}\nSMB SPRAY: {smbspray}"
+        if sshspray != "N/A":
+            G.nodes[node]["category"] = "ssh_spray"
+            cat = "ssh_spray"
+            G.nodes[node]["shape"] = category_styles["ssh_spray"]["shape"]
+            G.nodes[node]["size"] = category_styles["ssh_spray"]["size"]
+            G.nodes[node]["borderWidth"] = category_styles["ssh_spray"]["borderWidth"]
             
+                            # Renk objesi şeklinde atanmalı (Kırmızı kalmaması için):
+            G.nodes[node]["color"] = {
+                "background": category_styles["ssh_spray"]["color"],
+                "border": category_styles["ssh_spray"]["border"],
+            }
+            G.nodes[node]["title"] = f"Node ID: {node}\nCategory: {cat}\nRole: {role}\nPivot Score: {pivotscore}\nOS: {os}\nOpen Ports: {open_ports}\nInterface: {interface}\nSSH SPRAY: {sshspray}"
+            
+
+
+
         for u, v, data in G.edges(data=True):
             rel = data.get("category", data.get("relation", ""))
             lport = data.get("localport", "")

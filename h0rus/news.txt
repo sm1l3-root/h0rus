@@ -1,8 +1,5 @@
-Release Notes – v1.0.0-alpha
-Robust Exception Handling: Added dedicated Unknown Role and port exception controls across port2role and GhostBuster.
+Release Notes – v2.0.0 alpha
 
-Bug Fixes: Resolved index alignment and offset bugs within the RoleFinder module.
-
-Active Recon & Auth: Integrated SMB and SSH Password Spraying capabilities.
-
-Full OS Data Pipeline Integration: OS-level discovery data is now seamlessly processed across Nmap, GhostBuster, RoleFinder, and PivotScore
+lightweight version is now available and runs on full function 
+when you moved through the network you might wanna add new hacked devices topologys in to the main topology 
+and now its possible with this new lightweight version of h0rus
